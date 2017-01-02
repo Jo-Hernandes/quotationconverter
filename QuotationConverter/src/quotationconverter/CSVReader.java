@@ -42,7 +42,6 @@ public class CSVReader {
             try (InputStreamReader streamReader = new InputStreamReader(connection.getInputStream());
             BufferedReader br = new BufferedReader(streamReader);
             Stream<String> lines = br.lines()) {
-//            lines.forEach(s -> System.out.println(s));
             lines.forEach(action);
             }
         }
@@ -56,17 +55,13 @@ public class CSVReader {
     public HashMap<String, BigDecimal> getCurrencyQuotationsAsHash() throws IOException{
         HashMap<String, BigDecimal> valueToQuotations;
         valueToQuotations = new HashMap<>();
-        handleCSV(new Consumer<String>() {
-            @Override
-            public void accept(String t) {
-                String[] stringArray = t.split(";");
-                String quotationType = stringArray[3];
-                BigDecimal quotationValue =  new BigDecimal(stringArray[4].replace(",", "."));// Double.parseDouble(stringArray[4].replace(",", "."));
-                valueToQuotations.put(quotationType, quotationValue);
-            }
+        handleCSV((String t) -> {
+            String[] stringArray = t.split(";");
+            String quotationType = stringArray[3];
+            BigDecimal quotationValue =  new BigDecimal(stringArray[4].replace(",", "."));// Double.parseDouble(stringArray[4].replace(",", "."));
+            valueToQuotations.put(quotationType, quotationValue);
         });      
             return valueToQuotations;
-        
     }
     
 }

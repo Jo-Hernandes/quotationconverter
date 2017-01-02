@@ -12,10 +12,7 @@ import java.util.Locale;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author joohe
- */
+
 public class DateUtilsTest {
     
     public DateUtilsTest() {
@@ -27,7 +24,6 @@ public class DateUtilsTest {
      */
     @Test
     public void testGetDateFromStringFormat() throws Exception {
-        System.out.println("getDateFromStringFormat");
         String dateString = "02/01/2017";
         String formatString = "dd/MM/yyyy";
         
@@ -43,7 +39,6 @@ public class DateUtilsTest {
      */
     @Test
     public void testIsWeekdend() {
-        System.out.println("isWeekdend");
         Date date = new Date(2017, 0, 1);
         boolean expResult = false;
         boolean result = DateUtils.isWeekdend(date);
@@ -55,7 +50,6 @@ public class DateUtilsTest {
      */
     @Test
     public void testGetNextDay() {
-        System.out.println("getNextDay");
         Date date = new Date(2017, 0, 1);
         Date expResult = new Date(2017, 0, 2);
         Date result = DateUtils.getNextDay(date);

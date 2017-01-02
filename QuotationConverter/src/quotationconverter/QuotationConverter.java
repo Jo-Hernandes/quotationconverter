@@ -23,11 +23,11 @@ public class QuotationConverter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Converter converter = new Converter();
-        try {
-            System.out.println("R$ " + converter.currencyQuotation("USD", "EUR", 100.00, "01/01/2017"));
-        } catch (Exception ex) {
-            Logger.getLogger(QuotationConverter.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        Converter converter = new Converter();
+//        try {
+//            System.out.println("R$ " + converter.currencyQuotation("USD", "EUR", 100.00, "01/01/2017"));
+//        } catch (Exception ex) {
+//            Logger.getLogger(QuotationConverter.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }    
 }

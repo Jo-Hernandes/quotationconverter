@@ -51,6 +51,6 @@ public class DateUtils {
         c.setTime(date);
         c.add(Calendar.DATE, 1);
         return c.getTime();    
-    }
-       
+    }     
+    
 }
