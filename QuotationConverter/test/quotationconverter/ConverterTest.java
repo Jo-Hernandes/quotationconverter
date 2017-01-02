@@ -7,10 +7,6 @@ package quotationconverter;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Rule;
@@ -28,19 +24,6 @@ public class ConverterTest {
     
     public ConverterTest() {
     }
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    @AfterClass
-    public static void tearDownClass() {
-    } 
-    @Before
-    public void setUp() {
-    }
-    @After
-    public void tearDown() {
-    }
-
     
     /**
      * Test of currencyQuotation method with 4 arguments, of class Converter. expected different results
@@ -106,7 +89,7 @@ public class ConverterTest {
     
     
     ///
-    ///  TESTING METHOD TO VALUE ZERO ON THE QUOTATION VALUE
+    ///  TESTING METHOD TO VALUE ZERO ON THE QUOTATION TO GET QUOTATION
     ///
 
     @Test
@@ -134,8 +117,8 @@ public class ConverterTest {
     }
     
     
-        ///
-    ///  TESTING METHOD TO MAX DOUBLE VALUE ON THE QUOTATION VALUE
+    ///
+    ///  TESTING METHOD TO MAX INTEGER VALUE ON THE VALUE TO GET QUOTATION
     ///
 
     @Test
