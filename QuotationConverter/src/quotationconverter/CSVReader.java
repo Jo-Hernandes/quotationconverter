@@ -8,6 +8,7 @@ package quotationconverter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
@@ -52,24 +53,20 @@ public class CSVReader {
      * currency, using the currency name as the hash key 
      * @return valueToQuotations 
      */
-    public HashMap<String, Double> getCurrencyQuotationsAsHash(){
-        HashMap<String, Double> valueToQuotations;
+    public HashMap<String, BigDecimal> getCurrencyQuotationsAsHash() throws IOException{
+        HashMap<String, BigDecimal> valueToQuotations;
         valueToQuotations = new HashMap<>();
-        try{
         handleCSV(new Consumer<String>() {
             @Override
             public void accept(String t) {
                 String[] stringArray = t.split(";");
                 String quotationType = stringArray[3];
-                Double quotationValue =  Double.parseDouble(stringArray[4].replace(",", "."));
+                BigDecimal quotationValue =  new BigDecimal(stringArray[4].replace(",", "."));// Double.parseDouble(stringArray[4].replace(",", "."));
                 valueToQuotations.put(quotationType, quotationValue);
             }
-        });
-        } catch (IOException e){
-            e.printStackTrace();
-        } finally {
+        });      
             return valueToQuotations;
-        }
+        
     }
     
 }

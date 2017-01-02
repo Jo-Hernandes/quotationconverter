@@ -6,6 +6,8 @@
 package quotationconverter;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -21,17 +23,11 @@ public class QuotationConverter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        CSVReader reader;
-        reader =  CSVReader.newInstance("http://www4.bcb.gov.br/Download/fechamento/20170106.csv");
-                
-        Set<Map.Entry<String, Double>> entrySet = reader.getCurrencyQuotationsAsHash().entrySet();
-        System.out.println("entradas : " + entrySet.size());
-        for (Map.Entry entry : entrySet){
-            System.out.println("entry : " + entry.toString());
+        Converter converter = new Converter();
+        try {
+            System.out.println("R$ " + converter.currencyQuotation("USD", "EUR", 100.00, "10/01/2017"));
+        } catch (Exception ex) {
+            Logger.getLogger(QuotationConverter.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-    }
-    
+    }    
 }
