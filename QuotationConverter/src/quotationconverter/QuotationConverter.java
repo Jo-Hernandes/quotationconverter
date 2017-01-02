@@ -25,7 +25,7 @@ public class QuotationConverter {
     public static void main(String[] args) {
         Converter converter = new Converter();
         try {
-            System.out.println("R$ " + converter.currencyQuotation("USD", "EUR", 100.00, "10/01/2017"));
+            System.out.println("R$ " + converter.currencyQuotation("USD", "EUR", 100.00, "01/01/2017"));
         } catch (Exception ex) {
             Logger.getLogger(QuotationConverter.class.getName()).log(Level.SEVERE, null, ex);
         }

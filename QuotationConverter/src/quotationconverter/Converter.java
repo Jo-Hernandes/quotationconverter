@@ -24,11 +24,26 @@ public class Converter {
     private static final String CBC_Url = "http://www4.bcb.gov.br/Download/fechamento/%s.csv";
     private HashMap<String, BigDecimal> savedQuotation;
     
-    public BigDecimal currencyQuotation(String from, String to, Number value, String quotation) throws Exception {
-        if (value.floatValue() < 0) throw new RuntimeException("parameter cannot be negative");
-        saveQuotation(quotation);
+    public BigDecimal currencyQuotation(String from, String to, Number value, String quotation) throws RuntimeException {
+        if (value.floatValue() < 0) throw new RuntimeException("value parameter cannot be negative");
+        try {
+            saveQuotation(quotation);
+        } catch (IOException ex) {
+            throw new RuntimeException("failed to access url", ex);
+        }
         
+        if (! savedQuotation.containsKey(from)) throw new RuntimeException("currency not found");
+        if (! savedQuotation.containsKey(to)) throw new RuntimeException("currency not found");
         
+        BigDecimal  val = savedQuotation.get(from).multiply(new BigDecimal(value.doubleValue()));
+    
+        return convert(val, savedQuotation.get(to));
+    }
+    
+    
+        public BigDecimal currencyQuotation(String from, String to, Number value) throws RuntimeException {
+        if (value.floatValue() < 0) throw new RuntimeException("value parameter cannot be negative");
+        if (savedQuotation == null || savedQuotation.isEmpty()) throw new RuntimeException("currency quotations not available");
         if (! savedQuotation.containsKey(from)) throw new RuntimeException("currency not found");
         if (! savedQuotation.containsKey(to)) throw new RuntimeException("currency not found");
         
